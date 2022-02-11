@@ -28,6 +28,10 @@
   margin-left: 1%;
 }
 
+.personajes_personajes:hover #personajes_selector {
+  opacity: 100%;
+}
+
 .personajes_luigi {
   margin-left: 90%;
 }
@@ -45,4 +49,21 @@
 #personajes_titulo {
   margin-left: 40%;
   padding-top: 1%;
+}
+
+#personajes_selector {
+  position: absolute;
+  width: 30px;
+  height: 40px;
+  opacity: 0%;
+}
+
+.personajes_selector_mario_toad {
+  margin-top: 2%;
+  margin-left: 11%;
+}
+
+.personajes_selector_luigi {
+  margin-top: 20%;
+  margin-left: -175%;
 }
