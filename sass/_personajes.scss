@@ -1,0 +1,42 @@
+.personajes_body{
+    width: 1170px;
+    height: 360px;
+    background-color: #6883DF;
+}
+.personajes_imagenes{
+    width: 55px;
+    height: 75px;
+    position: relative;
+}
+.personajes_botones{
+    position:absolute;
+    border-radius: 30%;
+    font-family: cursive;
+    font-size: 15px;
+    background-color: #B91327;
+    transition-duration: 0.4s;
+}
+.personajes_botones:hover{
+    background-color: #EE596A;
+}
+.personajes_personajes{
+    position:relative;
+    // margin-top: 1%;
+    // margin-bottom: 1%;
+    margin-left: 1%;
+}
+.personajes_luigi{
+    margin-left: 90%;
+}
+.personajes_botones_mario_toad{
+    margin-top: 2%;
+    margin-left: 4%;
+}
+.personajes_botones_luigi{
+    margin-top: 20%;
+    margin-left: -130%;
+}
+#personajes_titulo{
+    margin-left: 40%;
+    padding-top: 1%;
+}

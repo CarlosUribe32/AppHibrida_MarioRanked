@@ -6,20 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personajes</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/personajes.css">
     <script src="js/main.js"></script>
 </head>
 
 <body>
-    <div>
-        <h1>Personajes</h1>
-        <div>
-            <img src="imgs/personaje_mario.png">
-            <button>Mario</button>
-            <img src="imgs/personaje_luigi.png">
-            <button>Luigi</button>
-            <img src="imgs/personaje_toad.png">
-            <button>Toad</button>
+    <div class="personajes_body">
+        <h1 id="personajes_titulo">Personajes</h1>
+        <hr>
+        <div class="personajes_personajes">
+            <img src="imgs/personaje_mario.png" class="personajes_imagenes">
+            <button class="personajes_botones personajes_botones_mario_toad">Mario</button>
+        </div>
+        <hr>
+        <div class="personajes_personajes personajes_luigi">
+            <img src="imgs/personaje_luigi.png" class="personajes_imagenes">
+            <button class="personajes_botones personajes_botones_luigi">Luigi</button>
+        </div>
+        <hr>
+        <div class="personajes_personajes">
+            <img src="imgs/personaje_toad.png" class="personajes_imagenes">
+            <button class="personajes_botones personajes_botones_mario_toad">Toad</button>
         </div>
     </div>
 </body>
