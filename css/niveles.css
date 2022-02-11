@@ -1,9 +1,5 @@
 .niveles_body {
-  background-color: #E82139;
-  width: 1170px;
-  height: 360px;
-  margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
+  background-color: white;
 }
 .niveles_body .niveles_h1 {
   font-size: xx-large;
@@ -14,7 +10,6 @@
 }
 .niveles_body .niveles_div {
   background-color: #E82139;
-  margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
   position: absolute;
   width: 300px;
@@ -32,7 +27,7 @@
 .niveles_body #niveles_div_uno {
   width: 1170px;
   height: 360px;
-  bottom: 45%;
+  bottom: 40%;
 }
 .niveles_body #niveles_div_nivel1 {
   left: 15%;

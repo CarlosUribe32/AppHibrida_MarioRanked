@@ -1,50 +1,49 @@
 $index_color_fondo: #6883df;
 .index_body {
-  width: 1170px;
-  height: 360px;
-  background: $index_colour_body;
+  background-color: rgb(255, 255, 255);
 
   .index_button {
     width: 90px;
     height: 40px;
     margin-bottom: 15px;
+    border-radius: 30%;
+    font-family: cursive;
+  }
+  .index_img{
+    position: fixed;
   }
   #index_div_images {
     position: absolute;
     width: 1170px;
     height: 360px;
+    background: $index_color_fondo;
 
     #index_img_titulo {
       width: 300px;
       height: 150px;
-      position: fixed;
       left: 440px;
     }
     #index_img_hongo {
       width: 70px;
       height: 90px;
-      position: fixed;
       left: 350px;
       top: 50px;
     }
     #index_img_mario {
       width: 80px;
       height: 100px;
-      position: fixed;
       left: 520px;
       top: 190px;
     }
     #index_img_rex {
       width: 80px;
       height: 100px;
-      position: fixed;
       left: 650px;
       top: 190px;
     }
     #index_img_nube {
       width: 80px;
       height: 100px;
-      position: fixed;
       left: 760px;
       top: 50px;
     }
