@@ -1,0 +1,59 @@
+$index_color_fondo: #6883df;
+.index_body {
+  width: 1170px;
+  height: 360px;
+  background: $index_colour_body;
+
+  .index_button {
+    width: 90px;
+    height: 40px;
+    margin-bottom: 15px;
+  }
+  #index_div_images {
+    position: absolute;
+    width: 1170px;
+    height: 360px;
+
+    #index_img_titulo {
+      width: 300px;
+      height: 150px;
+      position: fixed;
+      left: 440px;
+    }
+    #index_img_hongo {
+      width: 70px;
+      height: 90px;
+      position: fixed;
+      left: 350px;
+      top: 50px;
+    }
+    #index_img_mario {
+      width: 80px;
+      height: 100px;
+      position: fixed;
+      left: 520px;
+      top: 190px;
+    }
+    #index_img_rex {
+      width: 80px;
+      height: 100px;
+      position: fixed;
+      left: 650px;
+      top: 190px;
+    }
+    #index_img_nube {
+      width: 80px;
+      height: 100px;
+      position: fixed;
+      left: 760px;
+      top: 50px;
+    }
+  }
+  #index_div_buttons {
+    width: 100px;
+    height: 170px;
+    position: relative;
+    left: 330px;
+    top: 190px;
+  }
+}
