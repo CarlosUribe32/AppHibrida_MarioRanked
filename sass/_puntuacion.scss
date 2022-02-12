@@ -1,0 +1,100 @@
+.pnt-body {
+    width: 1170px;
+    height: 360px;
+    
+  }
+  
+.pnt-contenedor{
+      width: 1170px;
+      height: 360px;
+      background-color: #b91327;
+  
+  }
+
+.pnt-imagenes{
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 30%;
+    border-radius: 100%;
+    border: 2px solid yellow;
+    display: block;
+
+}
+
+#pnt-tabla{
+    width:720px;
+    margin:0 auto;
+    color:white;
+    text-align:center;
+  }
+tr{
+    cursor:pointer;
+  }
+  .pnt-tabla{
+    font-family:Arial;
+    font-weight:bold;
+    background-color:#0D6859;
+  }
+
+  #pnt-tabla tr:nth-child(odd) {
+    background-color: #6883DF;
+  }
+  
+  #pnt-tabla tr:nth-child(odd):hover {
+    color: black;
+    background-color: #355AD4;
+  }
+  
+  #pnt-tabla tr:nth-child(even) {
+    background-color: #2AA3A8;
+  }
+  
+  #pnt-tabla tr:nth-child(even):hover {
+    color: black;
+    background-color: #192F76;
+  }
+  
+  #pnt-top
+  {
+      text-align: center;
+  
+      font-family: fantasy;
+  
+      font-size: 50px;
+  
+      
+  }
+
+  #img-hongo{
+      top: -550px;
+      left: -340px;
+     
+  }
+  #img-planta{
+      top: -800px;
+      left: -340px;
+     
+  }
+
+  #img-mario{
+   
+        top: -1800px;
+        left: 640px;
+  }
+
+  #pnt-btn{
+      font-size: 20px;
+      border-radius: 30%;
+      font-family: cursive;
+      position: relative;
+      border: 3px solid black;
+      background: #6883DF;
+      top: 300px;
+      text-align: center;
+      left: 560px;
+  }
+  #pnt-btn:hover{
+    opacity: 50%;
+  }
+  
