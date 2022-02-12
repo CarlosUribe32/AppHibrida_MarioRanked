@@ -33,25 +33,26 @@ tr {
 .pnt-tabla {
   font-family: Arial;
   font-weight: bold;
+  font-size: 100;
   background-color: #0D6859;
 }
 
 #pnt-tabla tr:nth-child(odd) {
-  background-color: #A0C55E;
+  background-color: #6883DF;
 }
 
 #pnt-tabla tr:nth-child(odd):hover {
   color: black;
-  background-color: #00aa00;
+  background-color: #355AD4;
 }
 
 #pnt-tabla tr:nth-child(even) {
-  background-color: #7AB318;
+  background-color: #2AA3A8;
 }
 
 #pnt-tabla tr:nth-child(even):hover {
   color: black;
-  background-color: #007700;
+  background-color: #192F76;
 }
 
 #pnt-top {
@@ -71,8 +72,11 @@ tr {
 }
 
 #img-mario {
-  top: -1800px;
-  left: 640px;
+  width: 180px;
+  height: 210px;
+  top: -1430px;
+  left: 620px;
+  border: none;
 }
 
 #pnt-btn {
@@ -85,4 +89,7 @@ tr {
   top: 300px;
   text-align: center;
   left: 560px;
+}
+#pnt-btn:hover{
+  opacity: 50%;
 }

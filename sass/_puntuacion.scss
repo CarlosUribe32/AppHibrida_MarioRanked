@@ -37,20 +37,22 @@ tr{
     background-color:#0D6859;
   }
 
-  #pnt-tabla tr:nth-child(odd){
-    background-color:#A0C55E;
-  }
-  #pnt-tabla tr:nth-child(odd):hover{
-    color:black;
-    background-color:#00aa00;
+  #pnt-tabla tr:nth-child(odd) {
+    background-color: #6883DF;
   }
   
-  #pnt-tabla tr:nth-child(even){
-    background-color:#7AB318;
+  #pnt-tabla tr:nth-child(odd):hover {
+    color: black;
+    background-color: #355AD4;
   }
-  #pnt-tabla tr:nth-child(even):hover{
-    color:black;
-    background-color:#007700;
+  
+  #pnt-tabla tr:nth-child(even) {
+    background-color: #2AA3A8;
+  }
+  
+  #pnt-tabla tr:nth-child(even):hover {
+    color: black;
+    background-color: #192F76;
   }
   
   #pnt-top
@@ -85,10 +87,14 @@ tr{
       font-size: 20px;
       border-radius: 30%;
       font-family: cursive;
-      position: absolute;
+      position: relative;
       border: 3px solid black;
       background: #6883DF;
       top: 300px;
       text-align: center;
       left: 560px;
   }
+  #pnt-btn:hover{
+    opacity: 50%;
+  }
+  
