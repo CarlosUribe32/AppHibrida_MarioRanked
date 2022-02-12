@@ -58,10 +58,11 @@ tr{
   #pnt-top
   {
       text-align: center;
+      padding-top:1%;
   
       font-family: fantasy;
   
-      font-size: 50px;
+      // font-size: 50px;
   
       
   }
@@ -72,14 +73,14 @@ tr{
      
   }
   #img-planta{
-      top: -800px;
+      top: -820px;
       left: -340px;
      
   }
 
   #img-mario{
    
-        top: -1800px;
+        top: -1410px;
         left: 640px;
   }
 
@@ -90,7 +91,7 @@ tr{
       position: relative;
       border: 3px solid black;
       background: #6883DF;
-      top: 300px;
+      top: 200px;
       text-align: center;
       left: 560px;
   }
