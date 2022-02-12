@@ -6,22 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puntuación</title>
-    <link rel="stylesheet" href="css/main.css">
+   
     <script src="js/main.js"></script>
 </head>
 
-<body>
-    <div>
-        <h1>TOP</h1>
-      
-        <div>
+<body class="pnt-body">
+    <div class="pnt-contenedor">
+        <h1 id="pnt-top">TOP</h1>
 
-        </div>
-        <button>Inicio</button>
 
-        <img src="imgs/punt-mario.png">
-        <img src="imgs/punt-planta-carnivora.png">
-        <img src="imgs/punt-tesoro.png">
+        <button id="pnt-btn">Inicio</button>
+
+        <table cellspacing = "0" cellpadding="0" id="pnt-tabla">
+            <tr class="pnt-tabla">
+                <td>Posición</td>
+                <td>Nombre</td>
+                <td>Puntaje</td>
+            </tr>
+            <tr>
+            <td>1.</td>
+            <td>Juan pierre uribe</td>
+            <td>5000</td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>Zapatico feliz</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>Lucas</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td>Melisa</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>5.</td>
+                <td>Juana de arco</td>
+                <td>5000</td>
+            </tr>
+
+
+        </table>
+
+        <img src="imgs/punt-mario.png"  id="img-hongo" class="pnt-imagenes">
+        <img src="imgs/punt-planta-carnivora.png" id="img-planta" class="pnt-imagenes">
+        <img src="imgs/Mario_index.png"  id="img-mario" class="pnt-imagenes">
     </div>
 </body>
 
