@@ -10,7 +10,6 @@ $niveles_color_fondo: #E82139;
     }
     .niveles_div{
         background-color: $niveles_color_fondo;
-        padding: 0px 0px 0px 0px;
         position:absolute;
         width: 300px;
         height: 190px;
@@ -29,7 +28,7 @@ $niveles_color_fondo: #E82139;
     #niveles_div_uno{
         width: 1170px;
         height: 360px;
-        bottom: 40%;
+        bottom: 20%;
     }
     #niveles_div_nivel1{
         left: 15%;
