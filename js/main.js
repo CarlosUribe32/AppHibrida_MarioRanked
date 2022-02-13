@@ -6,22 +6,22 @@ function init(){
 
     switch (file) {
         case "index.html":
-            index;
+            index();
             break;
         case "creditos.html":
-            creditos;
+            creditos();
             break;
         case "personajes.html":
-            personajes;
+            personajes();
             break;
         case "puntuacion.html":
-            puntuacion;
+            puntuacion();
             break;
         case "login.html":
-            login;
+            login();
             break;
         case "niveles.html":
-            niveles;
+            niveles();
             break;
         default:
             break;
