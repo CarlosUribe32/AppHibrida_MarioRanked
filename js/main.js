@@ -23,6 +23,12 @@ function init(){
         case "niveles.html":
             niveles();
             break;
+        case "nivel1.html":
+            niveles();
+            break;
+        case "nivel2.html":
+            niveles();
+            break;
         default:
             break;
     }
