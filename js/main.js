@@ -23,6 +23,12 @@ function init(){
         case "niveles.html":
             niveles();
             break;
+        case "nivel1.html":
+            game1();
+            break;
+        // case "nivel2.html":
+        //     nivel2();
+        //     break;
         default:
             break;
     }
