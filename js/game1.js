@@ -2,6 +2,8 @@ import kaboom from "./vendor/kaboom.mjs";
 window.onload = game1;
 
 function game1(){
+
+    //Inicializamos Kaboom
     kaboom({
         global: true,
         fullscreen: true,
@@ -10,7 +12,9 @@ function game1(){
         background: [137, 226, 234]
     })
 
+    //Cargamos las imagenes
     loadRoot('../imgs/');
+    loadSprite('piso', 'nivel_piso.png');
     loadSprite('bloque', 'nivel_bloque.png');
     loadSprite('bloqueVacio', 'nivel_bloque2.png');
     loadSprite('flor', 'nivel_flor.png');
@@ -29,21 +33,30 @@ function game1(){
     loadSprite('luigi', 'personaje_luigi.png');
     loadSprite('toad', 'personaje_toad.png');
 
+    //Definimos el escenario
     addLevel([
         "                           ",
         "                           ",
-        "                      =    ",
-        "         ====         =    ",
-        "                      =    ",
-        "               =      =    ",
-        "===========================",
+        "                           ",
+        "                           ",
+        "                           ",
+        "                           ",
+        "                           ",
+        "                           ",
+        "                           ",
+        "                          ",
+        "                      ",
+        "                          ",
+        "                         ",
+        "=========================== ======",
     ], {
-        // define the size of each block
-        width: 32,
-        height: 32,
-        // define what each symbol means, by a function returning a component list (what will be passed to add())
+        // Definimos el tamaño de cada bloque
+        width: 35,
+        height: 35,
+        // Relacionamos los simbolos con las imagenes
         "=": () => [
-            sprite("bloque"),
+            scale(1.7),
+            sprite("piso"),
             area(),
             solid(),
         ],
@@ -58,36 +71,20 @@ function game1(){
         //     "danger",
         // ],
     })
+    const jugador = add([
+        scale(0.015),
+        sprite('mario'),
+        area(),
+        solid(),
+        pos(30, 0),
+        body(),
+        origin('bot'),
+    ])
 
-    // add([
-    //     sprite("bloque"),
-    //     pos(80, 40),
-    // ])
-    
-    // scene("game", ()=>{
-    //     layers(['bg ', 'obj', 'ui'], 'obj')
+    onKeyPress("space", () => {
+        if (jugador.isGrounded()) {
+            jugador.jump()
+        }
+    })
 
-    //     const map = [
-    //         '                                      ',
-    //         '                                      ',
-    //         '                                      ',
-    //         '                                      ',
-    //         '                                      ',
-    //         '         = = =                        ',
-    //         '                                      ',
-    //         '                                      ',
-    //         '                                      ',
-    //         '==============================   =====',
-    //     ]
-
-    //     const bloqueNivel = {
-    //         width:20,
-    //         height:20,
-    //         '=': [sprite('bloque'), solid()]
-    //     }
-  
-    //     const gameLevel = addLevel(map, bloqueNivel);
-    // })      
-
-    // go("game")
 }
