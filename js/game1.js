@@ -3,14 +3,37 @@ window.onload = game1;
 
 function game1(){
 
+    const canvas = document.getElementById('nivel_app');
+
+
     //Inicializamos Kaboom
     kaboom({
         global: true,
         fullscreen: true,
         scale: 1,
         debug: true,
-        background: [137, 226, 234]
+        background: [137, 226, 234], 
+        canvas
     })
+
+    const touchEndActions = [];
+    canvas.addEventListener('touchend', (e)=>{
+        [...e.changedTouches].forEach((t)=>{
+            touchEndActions.forEach((action)=>{
+                action(t.identifier, vec2(t.clientX, t.clientY).scale(1/200));
+            })
+        })
+    });
+
+    function onTouchEnd(action){
+        touchEndActions.push(action)
+        return()=>{
+            const idx = touchEndActions.findIndex(a => a === action)
+            if(idx>=0){
+                touchEndActions.splice(idx, 1)
+            }
+        }
+    }
 
     //Cargamos las imagenes
     loadRoot('../imgs/');
@@ -33,6 +56,11 @@ function game1(){
     loadSprite('luigi', 'personaje_luigi.png');
     loadSprite('toad', 'personaje_toad.png');
 
+    loadSprite('arriba', 'nivel_arriba.png');
+    loadSprite('abajo', 'nivel_abajo.png');
+    loadSprite('izquierda', 'nivel_izquierda.png');
+    loadSprite('derecha', 'nivel_derecha.png');
+
     //Definimos el escenario
     addLevel([
         "                           ",
@@ -44,10 +72,6 @@ function game1(){
         "                           ",
         "                           ",
         "                           ",
-        "                          ",
-        "                      ",
-        "                          ",
-        "                         ",
         "=========================== ======",
     ], {
         // Definimos el tamaño de cada bloque
@@ -81,10 +105,141 @@ function game1(){
         origin('bot'),
     ])
 
-    onKeyPress("space", () => {
+    function saltar() {
         if (jugador.isGrounded()) {
-            jugador.jump()
+            jugador.jump();
+        }
+    }
+
+    
+
+    //Botones
+    const btnArriba = add([
+        scale(0.06),
+        sprite('arriba'),
+        area(),
+        fixed(),
+        pos(1060, 100),
+        opacity(0.5),
+    ])
+    const btnDerecha = add([
+        scale(0.06),
+        sprite('derecha'),
+        area(),
+        fixed(),
+        pos(1100, 160),
+        opacity(0.5),
+    ])
+    const btnIzquierda = add([
+        scale(0.06),
+        sprite('izquierda'),
+        area(),
+        fixed(),
+        pos(1020, 160),
+        opacity(0.5),
+    ])
+
+    const keyDown = {
+        left: false,
+        right: false
+    }
+
+    onTouchStart((id, pos) =>{
+        if(btnIzquierda.hasPoint(pos)){
+            keyDown.left = true;
+            btnIzquierda.opacity = 1;
+        }
+        else if(btnDerecha.hasPoint(pos)){
+            keyDown.right = true;
+            btnDerecha.opacity = 1;
+        }
+        else if (btnArriba.hasPoint(pos)){
+            saltar();
+            btnArriba.opacity = 1;
         }
     })
+
+    const onTouchChanged = (_, pos)=>{
+        if(!btnIzquierda.hasPoint(pos)){
+            keyDown.left = false;
+            btnIzquierda.opacity = 0.5;
+        }
+        else{
+            keyDown.left = true;
+            btnIzquierda.opacity = 1;
+        }
+
+        if(!btnDerecha.hasPoint(pos)){
+            keyDown.right = false;
+            btnDerecha.opacity = 0.5;
+        }
+        else{
+            keyDown.right = true;
+            btnDerecha.opacity = 1;
+        }
+
+        if(!btnArriba.hasPoint(pos)){
+            btnArriba.opacity = 0.5;
+        }
+        else{
+            btnArriba.opacity = 1;
+        }
+    }
+
+    onTouchMove(onTouchChanged);
+    onTouchEnd(onTouchChanged);
+
+    const moveLeft = () =>{
+        jugador.move(-200, 0)
+    }
+    const moveRight = () =>{
+        jugador.move(200, 0)
+    }
+
+    onKeyDown('left', ()=>{
+        keyDown.left = true;
+    })
+    onKeyRelease('left', ()=>{
+        keyDown.left = false;
+    })
+    onKeyDown('right', ()=>{
+        keyDown.right = true;
+    })
+    onKeyRelease('right', ()=>{
+        keyDown.right = false;
+    })
+    onKeyDown('up', ()=>{
+        saltar();
+    })
+
+    onUpdate(()=>{
+        if(keyDown.left)
+            moveLeft();
+        else if(keyDown.right)
+            moveRight();
+    })
+    
+
+    // add([
+	// 	rect(160, 20),
+	// 	pos(1060, 100),
+	// 	"button",
+	// 	{
+	// 		clickAction: () => {
+    //             if (jugador.isGrounded()) {
+    //                 jugador.jump()
+    //             }
+    //         },
+	// 	},
+	// ]);
+
+    
+
+    // onClick(btnArriba, () => {
+    //     if (btnArriba.isGrounded()) {
+    //         btnArriba.jump()
+    //     }
+    // })
+
 
 }
