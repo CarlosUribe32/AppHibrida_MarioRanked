@@ -72,6 +72,7 @@ function game1(){
         "                           ",
         "     $   %$%*%                   ",
         "                           ",
+        "                           ",
         "                         -+  ",
         "              ^   ^   ^  ()  ",
         "=========================== ======",
@@ -141,30 +142,7 @@ function game1(){
     })
 
     //Jugador
-    function grande(){
-        let timer = 0;
-        let esGrande = false;
-        return{
-            update(){
-                if(esGrande){
-                    timer -= dt();
-                    if(timer<=0)
-                        this.encoger()
-                }
-            },
-            encoger(){
-                this.sprite("mario");
-                timer = 0;
-                esGrande = false;
-            },
-            crecer(time){
-                this.sprite("marioGrande");
-                timer = time;
-                esGrande = true;
-            }
-        }
-    }
-    const jugador = add([
+    let jugador = add([
         scale(0.012),
         sprite('mario'),
         area(),
@@ -175,11 +153,50 @@ function game1(){
         origin('bot'),
     ])
 
-    function saltar() {
-        if (jugador.isGrounded()) {
-            jugador.jump(680);
+    function grande(){
+        let esGrande = false;
+        return{
+            encoger(){
+                destroy(jugador);
+                jugador = add([
+                    scale(0.012),
+                    sprite('mario'),
+                    area(),
+                    solid(),
+                    pos(jugador.pos),
+                    body(),
+                    grande(),
+                    origin('bot'),
+                ])
+                esGrande = false;
+            },
+            crecer(){
+                destroy(jugador);
+                console.log(jugador.pos)
+                jugador = add([
+                    scale(0.07),
+                    sprite('marioGrande'),
+                    area(),
+                    solid(),
+                    pos(jugador.pos),
+                    body(),
+                    grande(),
+                    origin('bot'),
+                ])
+                esGrande = true;
+            }
         }
     }
+
+    function saltar() {
+        if (jugador.isGrounded()) {
+            jugador.jump(750);
+        }
+    }
+
+    action('esHongo', (m)=>{
+        m.move(50, 0);
+    })
 
     jugador.onHeadbutt((obj)=>{
         if(obj.is('moneda-sorpresa')){
@@ -189,7 +206,6 @@ function game1(){
                 scale(1.7),
                 area(),
                 solid(),
-                'esMoneda',
                 lifespan(0.3),
             ])
             destroy(obj);
@@ -200,7 +216,33 @@ function game1(){
                 area(),
                 solid(),
             ])
+            monedas++;
+            puntaje.text = monedas;
         }
+        if(obj.is('hongo-sorpresa')){
+            add([
+                sprite("hongo"),
+                pos(obj.pos.sub(0,30)),
+                scale(1.7),
+                area(),
+                solid(),
+                body(),
+                'esHongo'
+            ])
+            destroy(obj);
+            add([
+                sprite("bloqueVacio"),
+                pos(obj.pos),
+                scale(1.7),
+                area(),
+                solid(),
+            ])
+        }
+    })
+
+    jugador.collides('esHongo', (m)=>{
+        destroy(m);
+        jugador.crecer();
     })
 
     
@@ -326,28 +368,5 @@ function game1(){
         scale(0.5),
     ])
 
-    function grande(){
-        let timer = 0;
-        let esGrande = false;
-        return{
-            update(){
-                if(esGrande){
-                    timer -= dt();
-                    if(timer<=0)
-                        this.encoger()
-                }
-            },
-            encoger(){
-                this.sprite("mario");
-                timer = 0;
-                esGrande = false;
-            },
-            crecer(time){
-                this.sprite("marioGrande");
-                timer = time;
-                esGrande = true;
-            }
-        }
-    }
 
 }
