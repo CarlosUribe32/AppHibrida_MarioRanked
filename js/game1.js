@@ -1,4 +1,5 @@
 import kaboom from "./vendor/kaboom.mjs";
+let monedas = 0;
 window.onload = game1;
 
 function game1(){
@@ -47,6 +48,7 @@ function game1(){
     loadSprite('moneda', 'nivel_moneda.png');
     loadSprite('sorpresa', 'nivel_sorpresa.png');
     loadSprite('tubo', 'nivel_tubo.png');
+    loadSprite('tubo1', 'nivel_tubo1.png');
     loadSprite('tubo2', 'nivel_tubo2.png');
     loadSprite('tubo3', 'nivel_tubo3.png');
     loadSprite('marioGrande', 'personaje_mario2.png');
@@ -68,10 +70,11 @@ function game1(){
         "                           ",
         "                           ",
         "                           ",
+        "     $   %$%*%                   ",
         "                           ",
         "                           ",
-        "                           ",
-        "                           ",
+        "                         -+  ",
+        "              ^   ^   ^  ()  ",
         "=========================== ======",
     ], {
         // Definimos el tamaño de cada bloque
@@ -84,32 +87,163 @@ function game1(){
             area(),
             solid(),
         ],
-        // "$": () => [
-        //     sprite("coin"),
-        //     area(),
-        //     pos(0, -9),
-        // ],
-        // "^": () => [
-        //     sprite("spike"),
-        //     area(),
-        //     "danger",
-        // ],
+        "$": () => [
+            scale(1.7),
+            sprite("sorpresa"),
+            area(),
+            solid(),
+            "moneda-sorpresa",
+        ],
+        "%": () => [
+            scale(1.7),
+            sprite("bloque"),
+            area(),
+            solid(),
+        ],
+        "*": () => [
+            scale(1.7),
+            sprite("sorpresa"),
+            area(),
+            solid(),
+            'hongo-sorpresa',
+        ],
+        "^": () => [
+            scale(1.7),
+            sprite("goomba"),
+            area(),
+            solid(),
+            "peligro",
+        ],
+        "(": () => [
+            scale(0.9),
+            sprite("tubo2"),
+            area(),
+            solid(),
+        ],
+        ")": () => [
+            scale(0.9),
+            sprite("tubo3"),
+            area(),
+            solid(),
+        ],
+        "-": () => [
+            scale(0.9),
+            sprite("tubo1"),
+            area(),
+            solid(),
+        ],
+        "+": () => [
+            scale(0.9),
+            sprite("tubo"),
+            area(),
+            solid(),
+        ],
     })
-    const jugador = add([
-        scale(0.015),
+
+    //Jugador
+    let jugador = add([
+        scale(0.012),
         sprite('mario'),
         area(),
         solid(),
         pos(30, 0),
         body(),
+        grande(),
         origin('bot'),
     ])
 
-    function saltar() {
-        if (jugador.isGrounded()) {
-            jugador.jump();
+    function grande(){
+        let esGrande = false;
+        return{
+            encoger(){
+                destroy(jugador);
+                jugador = add([
+                    scale(0.012),
+                    sprite('mario'),
+                    area(),
+                    solid(),
+                    pos(jugador.pos),
+                    body(),
+                    grande(),
+                    origin('bot'),
+                ])
+                esGrande = false;
+            },
+            crecer(){
+                destroy(jugador);
+                console.log(jugador.pos)
+                jugador = add([
+                    scale(0.07),
+                    sprite('marioGrande'),
+                    area(),
+                    solid(),
+                    pos(jugador.pos),
+                    body(),
+                    grande(),
+                    origin('bot'),
+                ])
+                esGrande = true;
+            }
         }
     }
+
+    function saltar() {
+        if (jugador.isGrounded()) {
+            jugador.jump(750);
+        }
+    }
+
+    action('esHongo', (m)=>{
+        m.move(50, 0);
+    })
+    
+
+    jugador.onHeadbutt((obj)=>{
+        if(obj.is('moneda-sorpresa')){
+            add([
+                sprite("moneda"),
+                pos(obj.pos.sub(0,30)),
+                scale(1.7),
+                area(),
+                solid(),
+                lifespan(0.3),
+            ])
+            destroy(obj);
+            add([
+                sprite("bloqueVacio"),
+                pos(obj.pos),
+                scale(1.7),
+                area(),
+                solid(),
+            ])
+            monedas++;
+            puntaje.text = monedas;
+        }
+        if(obj.is('hongo-sorpresa')){
+            add([
+                sprite("hongo"),
+                pos(obj.pos.sub(0,30)),
+                scale(1.7),
+                area(),
+                solid(),
+                body(),
+                'esHongo',
+            ])
+            destroy(obj);
+            add([
+                sprite("bloqueVacio"),
+                pos(obj.pos),
+                scale(1.7),
+                area(),
+                solid(),
+            ])
+        }
+    })
+
+    jugador.collides('esHongo', (m)=>{
+        destroy(m);
+        jugador.crecer();
+    })
 
     
 
@@ -219,27 +353,20 @@ function game1(){
             moveRight();
     })
     
-
-    // add([
-	// 	rect(160, 20),
-	// 	pos(1060, 100),
-	// 	"button",
-	// 	{
-	// 		clickAction: () => {
-    //             if (jugador.isGrounded()) {
-    //                 jugador.jump()
-    //             }
-    //         },
-	// 	},
-	// ]);
-
-    
-
-    // onClick(btnArriba, () => {
-    //     if (btnArriba.isGrounded()) {
-    //         btnArriba.jump()
-    //     }
-    // })
+    //Puntaje
+    const monedaPuntaje = add([
+        pos(1020, 25),
+        scale(1.7),
+        sprite("moneda"),
+    ])
+    const puntaje = add([
+        text(monedas),
+        {
+            value:'score',
+        },
+        pos(1060, 20),
+        scale(0.5),
+    ])
 
 
 }
