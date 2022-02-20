@@ -93,7 +93,6 @@ function game1(){
             area(),
             solid(),
             "moneda-sorpresa",
-            
         ],
         "%": () => [
             scale(1.7),
@@ -197,6 +196,7 @@ function game1(){
     action('esHongo', (m)=>{
         m.move(50, 0);
     })
+    
 
     jugador.onHeadbutt((obj)=>{
         if(obj.is('moneda-sorpresa')){
@@ -227,7 +227,7 @@ function game1(){
                 area(),
                 solid(),
                 body(),
-                'esHongo'
+                'esHongo',
             ])
             destroy(obj);
             add([
