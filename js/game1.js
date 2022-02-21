@@ -6,6 +6,29 @@ function game1(){
 
     const canvas = document.getElementById('nivel_app');
 
+    let pPequeño = localStorage.getItem('personajeSeleccionado');
+    let pGrande;
+    let escala;
+    let escalaGrande
+    if(pPequeño==='mario'){
+        pGrande = 'marioGrande';
+        escala = 0.012;
+        escalaGrande = 0.07;
+    }
+    else if(pPequeño==='luigi')
+    {
+        pGrande = 'luigiGrande';
+        escala = 0.03;
+        escalaGrande = 0.13;
+    }
+    else if(pPequeño==='toad')
+    {
+        pGrande = 'toadGrande';
+        escala = 0.079;
+        escalaGrande = 0.25;
+    }
+        
+
 
     //Inicializamos Kaboom
     kaboom({
@@ -141,47 +164,95 @@ function game1(){
     })
 
     //Jugador
-    let jugador = add([
-        scale(0.012),
-        sprite('mario'),
-        area(),
-        solid(),
-        pos(30, 0),
-        body(),
-        grande(),
-        origin('bot'),
-    ])
+    function creacionJugador(tamaño, posJug){
+        let jugador;
+        if(tamaño==='pequeño')
+            jugador = add([
+                scale(escala),
+                sprite(pPequeño),
+                area(),
+                solid(),
+                pos(posJug),
+                body(),
+                grande(),
+                origin('bot'),
+            ])
+        else if (tamaño==="grande")
+            jugador = add([
+                scale(escalaGrande),
+                sprite(pGrande),
+                area(),
+                solid(),
+                pos(posJug),
+                body(),
+                grande(),
+                origin('bot'),
+            ])
+
+            jugador.onHeadbutt((obj)=>{
+                if(obj.is('moneda-sorpresa')){
+                    add([
+                        sprite("moneda"),
+                        pos(obj.pos.sub(0,30)),
+                        scale(1.7),
+                        area(),
+                        solid(),
+                        lifespan(0.3),
+                    ])
+                    destroy(obj);
+                    add([
+                        sprite("bloqueVacio"),
+                        pos(obj.pos),
+                        scale(1.7),
+                        area(),
+                        solid(),
+                    ])
+                    monedas++;
+                    puntaje.text = monedas;
+                }
+                if(obj.is('hongo-sorpresa')){
+                    add([
+                        sprite("hongo"),
+                        pos(obj.pos.sub(0,30)),
+                        scale(1.7),
+                        area(),
+                        solid(),
+                        body(),
+                        'esHongo',
+                    ])
+                    destroy(obj);
+                    add([
+                        sprite("bloqueVacio"),
+                        pos(obj.pos),
+                        scale(1.7),
+                        area(),
+                        solid(),
+                    ])
+                }
+            })
+        
+            jugador.collides('esHongo', (m)=>{
+                destroy(m);
+                jugador.crecer();
+            })
+            console.log(jugador.pos);
+            return jugador;
+    }
+
+    let jugador = creacionJugador("pequeño", [30, 0]);
 
     function grande(){
         let esGrande = false;
         return{
             encoger(){
                 destroy(jugador);
-                jugador = add([
-                    scale(0.012),
-                    sprite('mario'),
-                    area(),
-                    solid(),
-                    pos(jugador.pos),
-                    body(),
-                    grande(),
-                    origin('bot'),
-                ])
+                jugador = creacionJugador("pequeño", jugador.pos);
                 esGrande = false;
             },
             crecer(){
                 destroy(jugador);
                 console.log(jugador.pos)
-                jugador = add([
-                    scale(0.07),
-                    sprite('marioGrande'),
-                    area(),
-                    solid(),
-                    pos(jugador.pos),
-                    body(),
-                    grande(),
-                    origin('bot'),
-                ])
+                jugador = creacionJugador("grande", jugador.pos);
                 esGrande = true;
             }
         }
@@ -195,54 +266,6 @@ function game1(){
 
     action('esHongo', (m)=>{
         m.move(50, 0);
-    })
-    
-
-    jugador.onHeadbutt((obj)=>{
-        if(obj.is('moneda-sorpresa')){
-            add([
-                sprite("moneda"),
-                pos(obj.pos.sub(0,30)),
-                scale(1.7),
-                area(),
-                solid(),
-                lifespan(0.3),
-            ])
-            destroy(obj);
-            add([
-                sprite("bloqueVacio"),
-                pos(obj.pos),
-                scale(1.7),
-                area(),
-                solid(),
-            ])
-            monedas++;
-            puntaje.text = monedas;
-        }
-        if(obj.is('hongo-sorpresa')){
-            add([
-                sprite("hongo"),
-                pos(obj.pos.sub(0,30)),
-                scale(1.7),
-                area(),
-                solid(),
-                body(),
-                'esHongo',
-            ])
-            destroy(obj);
-            add([
-                sprite("bloqueVacio"),
-                pos(obj.pos),
-                scale(1.7),
-                area(),
-                solid(),
-            ])
-        }
-    })
-
-    jugador.collides('esHongo', (m)=>{
-        destroy(m);
-        jugador.crecer();
     })
 
     
