@@ -46,35 +46,51 @@ function game1(){
     })
 
      //Cargamos las imagenes
-     loadRoot('../imgs/');
-     loadSprite('piso', 'nivel_piso.png');
-     loadSprite('bloque', 'nivel_bloque.png');
-     loadSprite('bloqueVacio', 'nivel_bloque2.png');
-     loadSprite('flor', 'nivel_flor.png');
-     loadSprite('goomba', 'nivel_goomba.png');
-     loadSprite('goomba2', 'nivel_goomba2.png');
-     loadSprite('hongo', 'nivel_hongo.png');
-     loadSprite('moneda', 'nivel_moneda.png');
-     loadSprite('sorpresa', 'nivel_sorpresa.png');
-     loadSprite('tubo', 'nivel_tubo.png');
-     loadSprite('tubo1', 'nivel_tubo1.png');
-     loadSprite('tubo2', 'nivel_tubo2.png');
-     loadSprite('tubo3', 'nivel_tubo3.png');
-     loadSprite('marioGrande', 'personaje_mario2.png');
-     loadSprite('luigiGrande', 'personaje_luigi2.png');
-     loadSprite('toadGrande', 'personaje_toad2.png');
-     loadSprite('mario', 'personaje_mario.png');
-     loadSprite('meta', 'nivel_meta.png');
-     loadSprite('luigi', 'personaje_luigi.png');
-     loadSprite('toad', 'personaje_toad.png');
+     loadRoot('../');
+     loadSprite('piso', './imgs/nivel_piso.png');
+     loadSprite('bloque', './imgs/nivel_bloque.png');
+     loadSprite('bloqueVacio', './imgs/nivel_bloque2.png');
+     loadSprite('flor', './imgs/nivel_flor.png');
+     loadSprite('goomba', './imgs/nivel_goomba.png');
+     loadSprite('goomba2', './imgs/nivel_goomba2.png');
+     loadSprite('hongo', './imgs/nivel_hongo.png');
+     loadSprite('moneda', './imgs/nivel_moneda.png');
+     loadSprite('sorpresa', './imgs/nivel_sorpresa.png');
+     loadSprite('tubo', './imgs/nivel_tubo.png');
+     loadSprite('tubo1', './imgs/nivel_tubo1.png');
+     loadSprite('tubo2', './imgs/nivel_tubo2.png');
+     loadSprite('tubo3', './imgs/nivel_tubo3.png');
+     loadSprite('marioGrande', './imgs/personaje_mario2.png');
+     loadSprite('luigiGrande', './imgs/personaje_luigi2.png');
+     loadSprite('toadGrande', './imgs/personaje_toad2.png');
+     loadSprite('mario', './imgs/personaje_mario.png');
+     loadSprite('meta', './imgs/nivel_meta.png');
+     loadSprite('luigi', './imgs/personaje_luigi.png');
+     loadSprite('toad', './imgs/personaje_toad.png');
 
-     loadSprite('arriba', 'nivel_arriba.png');
-     loadSprite('abajo', 'nivel_abajo.png');
-     loadSprite('izquierda', 'nivel_izquierda.png');
-     loadSprite('derecha', 'nivel_derecha.png');
+     loadSprite('arriba', './imgs/nivel_arriba.png');
+     loadSprite('abajo', './imgs/nivel_abajo.png');
+     loadSprite('izquierda', './imgs/nivel_izquierda.png');
+     loadSprite('derecha', './imgs/nivel_derecha.png');
+
+     //Cargamos el sonido
+     loadSound("nivel1", "./sounds/nivel1.mp3");
+     loadSound("nivelPerdido", "./sounds/nivelPerdido.mp3");
+     loadSound("nivelGanado", "./sounds/nivelGanado.mp3");
+     loadSound("salto", "./sounds/salto.mp3");
+     loadSound("goomba", "./sounds/goomba.mp3");
+     loadSound("coin", "./sounds/moneda.mp3");
+     loadSound("hongoS", "./sounds/hongo.mp3");
 
 
     scene("juego", ()=>{
+        //Iniciamos Sonido
+        const musicLevel = play("nivel1", {
+            loop: true,
+            volume: 0.5,
+        })
+
+
         const touchEndActions = [];
         canvas.addEventListener('touchend', (e)=>{
             [...e.changedTouches].forEach((t)=>{
@@ -138,7 +154,7 @@ function game1(){
                 area(),
                 solid(),
                 opacity(0),
-                "moneda-sorpresa-invicible",
+                "moneda-sorpresa-invisible",
             ],
             "%": () => [
                 scale(1.7),
@@ -219,6 +235,9 @@ function game1(){
 
                 jugador.onHeadbutt((obj)=>{
                     if(obj.is('moneda-sorpresa')){
+                        const musicMoneda = play("coin", {
+                            volume: 0.3,
+                        });
                         add([
                             sprite("moneda"),
                             pos(obj.pos.sub(0,30)),
@@ -238,7 +257,10 @@ function game1(){
                         monedas++;
                         puntaje.text = monedas;
                     }
-                    if(obj.is('moneda-sorpresa-invicible')){
+                    if(obj.is('moneda-sorpresa-invisible')){
+                        const musicMoneda = play("coin", {
+                            volume: 0.3,
+                        });
                         add([
                             sprite("moneda"),
                             pos(obj.pos.sub(0,30)),
@@ -280,6 +302,9 @@ function game1(){
                 })
             
                 jugador.collides('esHongo', (m)=>{
+                    const musicHongo = play("hongoS", {
+                        volume: 0.8,
+                    })
                     destroy(m);
                     jugador.crecer();
                 })
@@ -294,16 +319,21 @@ function game1(){
                 jugador.action(()=>{
                     camPos(jugador.pos);
                     if(jugador.pos.y >= caidaMuerte){
+                        musicLevel.stop();
                         go('estadoFinal', {score: puntaje.text, estado: 'Game Over'});
                     }
                 })
 
                 jugador.collides('peligroso', (p)=>{
                     if(estaSaltando){
+                        const musicGoomba = play("goomba", {
+                            volume: 0.9,
+                        })
                         destroy(p);
                     }
                     else{
                         if(jugador.is('taChikito') && puedoMorir){
+                            musicLevel.stop();
                             go('estadoFinal', {score: puntaje.text, estado: 'Game Over'});
                         }
                         else if (jugador.is('taGrandecito') && puedoMorir){
@@ -315,6 +345,7 @@ function game1(){
                     }
                 })
                 jugador.collides('ganaste', (g)=>{
+                    musicLevel.stop();
                     go('estadoFinal', {score:puntaje.text, estado: 'Ganaste'})
                 })
         }
@@ -340,6 +371,9 @@ function game1(){
 
         function saltar() {
             if (jugador.isGrounded()) {
+                const musicSalto = play("salto", {
+                    volume: 0.1,
+                })
                 jugador.jump(750);
                 estaSaltando = true;
             }
@@ -481,11 +515,25 @@ function game1(){
     })
 
     scene('estadoFinal', ({score, estado})=>{
+        let duracion;
+        if(estado==="Game Over"){
+            duracion=7000;
+            const musicLevel = play("nivelPerdido", {
+                volume: 0.5,
+            })
+        }
+        else if(estado==="Ganaste"){
+            duracion=6000;
+            const musicLevel = play("nivelGanado", {
+                volume: 0.5,
+            })
+        }
+
         add([text(estado, 32), origin('center'), pos(width()/2.1, height()/3.5)])
         add([text('Puntaje:'), origin('center'), pos(width()/2.1, height()/3.5 + 80)])
         add([text(score, 32), origin('center'), pos(width()/2.1, height()/3.5 + 160)])
 
-        let red = setTimeout(redireccionarIndex, 5000);
+        let red = setTimeout(redireccionarIndex, duracion);
 
         function redireccionarIndex(){
             let elJugador = localStorage.getItem("elJugador");
