@@ -258,7 +258,7 @@ function game1(){
                 jugador.action(()=>{
                     camPos(jugador.pos);
                     if(jugador.pos.y >= caidaMuerte){
-                        go('perdio', {score: puntaje.text});
+                        go('estadoFinal', {score: puntaje.text, estado: 'Game Over'});
                     }
                 })
 
@@ -268,7 +268,7 @@ function game1(){
                     }
                     else{
                         if(jugador.is('taChikito') && puedoMorir){
-                            go('perdio', {score: puntaje.text});
+                            go('estadoFinal', {score: puntaje.text, estado: 'Game Over'});
                         }
                         else if (jugador.is('taGrandecito') && puedoMorir){
                             puedoMorir = false;
@@ -441,8 +441,8 @@ function game1(){
         ])
     })
 
-    scene('perdio', ({score})=>{
-        add([text('GAME OVER', 32), origin('center'), pos(width()/2.1, height()/3.5)])
+    scene('estadoFinal', ({score, estado})=>{
+        add([text(estado, 32), origin('center'), pos(width()/2.1, height()/3.5)])
         add([text('Puntaje:'), origin('center'), pos(width()/2.1, height()/3.5 + 80)])
         add([text(score, 32), origin('center'), pos(width()/2.1, height()/3.5 + 160)])
     })
