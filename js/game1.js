@@ -64,6 +64,7 @@ function game1(){
      loadSprite('luigiGrande', 'personaje_luigi2.png');
      loadSprite('toadGrande', 'personaje_toad2.png');
      loadSprite('mario', 'personaje_mario.png');
+     loadSprite('meta', 'nivel_meta.png');
      loadSprite('luigi', 'personaje_luigi.png');
      loadSprite('toad', 'personaje_toad.png');
 
@@ -95,17 +96,17 @@ function game1(){
 
         //Definimos el escenario
         addLevel([
+            "         # # #               ",
+            "                                  !",
             "                           ",
-            "                           ",
-            "                           ",
-            "                           ",
+            "                                  ",
             "                           ",
             "     $   %$%*%                   ",
-            "                           ",
+            "                                   ",
             "                           ",
             "                         -+  ",
-            "              ^   ^   ^  ()  ",
-            "===========================  =====",
+            "              ^   ^   ^  ()      ",
+            "===========================  =========",
         ], {
             // Definimos el tamaño de cada bloque
             width: 35,
@@ -117,12 +118,27 @@ function game1(){
                 area(),
                 solid(),
             ],
+            "!": () => [
+                scale(0.137),
+                sprite("meta"),
+                area(),
+                solid(),
+                "ganaste",
+            ],
             "$": () => [
                 scale(1.7),
                 sprite("sorpresa"),
                 area(),
                 solid(),
                 "moneda-sorpresa",
+            ],
+            "#": () => [
+                scale(1.7),
+                sprite("sorpresa"),
+                area(),
+                solid(),
+                opacity(0),
+                "moneda-sorpresa-invicible",
             ],
             "%": () => [
                 scale(1.7),
@@ -222,6 +238,26 @@ function game1(){
                         monedas++;
                         puntaje.text = monedas;
                     }
+                    if(obj.is('moneda-sorpresa-invicible')){
+                        add([
+                            sprite("moneda"),
+                            pos(obj.pos.sub(0,30)),
+                            scale(1.7),
+                            area(),
+                            solid(),
+                            lifespan(0.3),
+                        ])
+                        destroy(obj);
+                        add([
+                            sprite("bloqueVacio"),
+                            pos(obj.pos),
+                            scale(1.7),
+                            area(),
+                            solid(),
+                        ])
+                        monedas+= 3;
+                        puntaje.text = monedas;
+                    }
                     if(obj.is('hongo-sorpresa')){
                         add([
                             sprite("hongo"),
@@ -277,6 +313,9 @@ function game1(){
                             tiempoSinMorir = setTimeout(function retraso(){puedoMorir = true;}, 2000);
                         }
                     }
+                })
+                jugador.collides('ganaste', (g)=>{
+                    go('estadoFinal', {score:puntaje.text, estado: 'Ganaste'})
                 })
         }
 
@@ -445,6 +484,15 @@ function game1(){
         add([text(estado, 32), origin('center'), pos(width()/2.1, height()/3.5)])
         add([text('Puntaje:'), origin('center'), pos(width()/2.1, height()/3.5 + 80)])
         add([text(score, 32), origin('center'), pos(width()/2.1, height()/3.5 + 160)])
+
+        let red = setTimeout(redireccionarIndex, 5000);
+
+        function redireccionarIndex(){
+            let elJugador = localStorage.getItem("elJugador");
+            localStorage.removeItem(elJugador);
+            localStorage.setItem(elJugador, monedas);
+            location.href = "index.html";
+        }
     })
     
     go("juego");
