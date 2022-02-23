@@ -39,6 +39,12 @@ function logLista (){
             {
                 window.localStorage.removeItem(logTxt);
                 window.localStorage.setItem(logTxt,0);
+                if(window.localStorage.getItem("elJugador")!=null){
+                    window.localStorage.removeItem("elJugador");
+                    window.localStorage.setItem("elJugador",logTxt);
+                }
+                else
+                    window.localStorage.setItem("elJugador",logTxt);
                 location.href = "personajes.html";
             }
             
@@ -47,6 +53,12 @@ function logLista (){
         else
         {
             window.localStorage.setItem(logTxt,0);
+            if(window.localStorage.getItem("elJugador")!=null){
+                window.localStorage.removeItem("elJugador");
+                window.localStorage.setItem("elJugador",logTxt);
+            }
+            else
+                window.localStorage.setItem("elJugador",logTxt);
             location.href = "personajes.html";
 
         }
