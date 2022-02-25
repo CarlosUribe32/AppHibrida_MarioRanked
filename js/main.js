@@ -2,28 +2,28 @@ window.onload = init;
 
 function init(){
     let path = window.location.pathname;
-    let file = path.substring(path.lastIndexOf('/') + 1);
+    let file = path.substring(path.lastIndexOf('/'));
     console.log(file);
     switch (file) {
-        case "index.html":
+        case "/index.html":
             index();
             break;
-        case " ":
+        case "/":
             index();
             break;
-        case "creditos.html":
+        case "/creditos.html":
             creditos();
             break;
-        case "personajes.html":
+        case "/personajes.html":
             personajes();
             break;
-        case "puntuacion.html":
+        case "/puntuacion.html":
             puntuacion();
             break;
-        case "login.html":
+        case "/login.html":
             login();
             break;
-        case "niveles.html":
+        case "/niveles.html":
             niveles();
             break;
         // case "nivel1.html":
