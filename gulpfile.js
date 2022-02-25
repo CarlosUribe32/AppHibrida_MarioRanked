@@ -8,7 +8,7 @@ const uglify = require('gulp-uglify-es').default;
 sass.compiler = require('dart-sass');
 
 function js(){
-    return src("./js/**/*.js")
+    return src(['./js/index.js','./js/login.js','./js/niveles.js','./js/personajes.js','./js/creditos.js','./js/puntuacion.js', './js/main.js'])
             .pipe(concat("main.min.js"))
             .pipe(uglify())
             .pipe(dest('./js'));
