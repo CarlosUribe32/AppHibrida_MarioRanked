@@ -3,7 +3,7 @@ window.onload = init;
 function init(){
     let path = window.location.pathname;
     let file = path.substring(path.lastIndexOf('/') + 1);
-
+    console.log(file);
     switch (file) {
         case "index.html":
             index();
