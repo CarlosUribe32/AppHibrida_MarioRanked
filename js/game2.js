@@ -73,6 +73,7 @@ function game2(){
      loadSprite('izquierda', './imgs/nivel_izquierda.png');
      loadSprite('derecha', './imgs/nivel_derecha.png');
      loadSprite('blAzul', './imgs/nivel-bloqueAzul.png');
+     loadSprite('estrellita', './imgs/creditos_estrella.png');
 
      //Cargamos el sonido
      loadSound("nivel1", "./sounds/nivel1.mp3");
@@ -112,18 +113,18 @@ function game2(){
         }
 
         //Definimos el escenario
-        addLevel([
-            "         # # #                                                                  ",
-            "                                                                                 !",
-            "                                                                               ",
-            "                                              %%                           ", 
-            "                                                             x                ",
-            "     $   %$%*%                         ###                  xx            ",
-            "                                                           xxx             ",
-            "                                                          xxxx          ",
-            "                               ^      %%%%%%             xxxxx   -+      ",
-            "              ^   ^   ^  -+-+-+-+-+                ^    xxxxxx    ()             ",
-            "=========================()()()()()            ========================                  ",
+        addLevel([  
+            "         # # #        e                                                                          ",
+            "                                                                                                   !",
+            "                                                                                              xx ",
+            "                                             %%                                             -+xx     ", 
+            "                           %$%*%                             x                            xx()xx",
+            "      %%%%%                            ###                  xx                          -+xx()xx",
+            "                                                           xxx                        xx()xx()xx ",
+            "                                                          xxxx                      -+xx()xx()xx",
+            "                               ^      %%%%%%             xxxxx      -+             x()xx()xx()xx  ",
+            "              ^   ^   ^  -+-+-+-+-+                ^    xxxxxx      ()            xx()xx()xx()xx    ",
+            "=========================()()()()()            =================    =======       ==============",
         ], {
             // Definimos el tamaño de cada bloque
             width: 35,
@@ -206,6 +207,12 @@ function game2(){
             "x": () => [
                 scale(0.9),
                 sprite("blAzul"),
+                area(),
+                solid(),
+            ],
+            "e": () =>[
+                scale(0.1),
+                sprite("estrellita"),
                 area(),
                 solid(),
             ]
