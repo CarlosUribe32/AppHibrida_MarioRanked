@@ -112,17 +112,22 @@ function game1(){
 
         //Definimos el escenario
         addLevel([
-            "         # # #               ",
-            "                                  !",
-            "                           ",
-            "                                  ",
-            "                           ",
-            "     $   %$%*%                   ",
-            "                                   ",
-            "                           ",
-            "                         -+  ",
-            "              ^   ^   ^  ()      ",
-            "===========================  =========",
+            "                 #                               #         #        #                             #                           ###          #",
+            "                                                                                                                                                                ",
+            "                                                                                                                                                                $",
+            "#                                                                                 $",
+            "                                                           ^                                                                   ^",
+            "               # # #                             #       %$%$%      #                           #   #                          #        #  #  #", 
+            "                                                                                                                                                                             !",
+            "                                                                                                                                                                %",
+            "#                                                                                 *                                                                            %%",
+            "                                                                                                                                                              %%%",
+            "           $   %$%*%                             %%%%%%%%%%%%%%%%%%%                    $$$       #       $$$                  $           #                 %%%%",
+            "                                                                                                                                                            %%%%%",
+            "                                                                                                                                                           %%%%%%",
+            "-+     -+                -+                                                      -+                              -+                                  -+   %%%%%%%",
+            "()     ()       ^   ^   ^()               ^  ^  ^                                ()                       ^     ^()              ^  ^  ^   ^         ()  %%%%%%%%                         ",
+            "=========  ================  ====================                   ===============================================    =========================    ==============================",
         ], {
             // Definimos el tamaño de cada bloque
             width: 35,
@@ -161,6 +166,7 @@ function game1(){
                 sprite("bloque"),
                 area(),
                 solid(),
+                'bloquesito',
             ],
             "*": () => [
                 scale(1.7),
@@ -205,7 +211,7 @@ function game1(){
 
         //Jugador
         let jugador;
-        creacionJugador("pequeño", [30, 0]);
+        creacionJugador("pequeño", [90, 0]);
 
         function creacionJugador(tamaño, posJug){
             if(tamaño==='pequeño')
@@ -298,6 +304,9 @@ function game1(){
                             area(),
                             solid(),
                         ])
+                    }
+                    if(obj.is('bloquesito')){
+                        destroy(obj);
                     }
                 })
             
