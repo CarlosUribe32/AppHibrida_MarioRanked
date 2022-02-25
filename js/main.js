@@ -8,6 +8,9 @@ function init(){
         case "index.html":
             index();
             break;
+        case "":
+            index();
+            break;
         case "creditos.html":
             creditos();
             break;
