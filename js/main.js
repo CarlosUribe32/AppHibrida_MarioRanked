@@ -8,7 +8,7 @@ function init(){
         case "index.html":
             index();
             break;
-        case "":
+        case " ":
             index();
             break;
         case "creditos.html":
