@@ -67,6 +67,7 @@ function game1(){
      loadSprite('meta', './imgs/nivel_meta.png');
      loadSprite('luigi', './imgs/personaje_luigi.png');
      loadSprite('toad', './imgs/personaje_toad.png');
+     loadSprite('nube', './imgs/nivel-nube.png');
 
      loadSprite('arriba', './imgs/nivel_arriba.png');
      loadSprite('abajo', './imgs/nivel_abajo.png');
@@ -112,15 +113,15 @@ function game1(){
 
         //Definimos el escenario
         addLevel([
-            "                 #                               #         #        #                             #                           ###          #",
-            "                                                                                                                                                                ",
-            "                                                                                                                                                                $",
-            "#                                                                                 $",
+            "                 #                         m     #         #        #                             #                m          ###          #           m",
+            "                                                                                  m                                                                             ",
+            "                                                                                                           m                                                    $",
+            "#       m                      mmm                                                $",
             "                                                           ^                                                                   ^",
-            "               # # #                             #       %$%$%      #                           #   #                          #        #  #  #", 
-            "                                                                                                                                                                             !",
+            "               # # #                             #       %$%$%      #                    m      #   #                          #        #  #  #", 
+            "                                                                        m                                      m                                                             !",
             "                                                                                                                                                                %",
-            "#                                                                                 *                                                                            %%",
+            "#                                                                                *                                              m                              %%",
             "                                                                                                                                                              %%%",
             "           $   %$%*%                             %%%%%%%%%%%%%%%%%%%                    $$$       #       $$$                  $           #                 %%%%",
             "                                                                                                                                                            %%%%%",
@@ -207,6 +208,13 @@ function game1(){
                 area(),
                 solid(),
             ],
+            "m": () =>[
+                scale(0.3),
+                sprite("nube"),
+                area(),
+                
+                
+            ]
         })
 
         //Jugador

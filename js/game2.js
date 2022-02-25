@@ -74,6 +74,7 @@ function game2(){
      loadSprite('derecha', './imgs/nivel_derecha.png');
      loadSprite('blAzul', './imgs/nivel-bloqueAzul.png');
      loadSprite('estrellita', './imgs/creditos_estrella.png');
+     loadSprite('nube', './imgs/nivel-nube.png');
 
      //Cargamos el sonido
      loadSound("nivel1", "./sounds/nivel1.mp3");
@@ -114,22 +115,23 @@ function game2(){
 
         //Definimos el escenario
         addLevel([
-            "                                                                                                         e      ",
-            "                                                                                                              ",
-            "                                                                e                 e                          ",
-            "                                                                                                            ",
-            "                                                                                                            ",
-            "       # # #            00                                                                                   ",
-            "                                                                                                              !",
-            "                                                                                                       xx ",
-            "                                             %%                                %$$$%                 -+xx     ", 
-            "                           %$%*%                             x                                     xx()xx",
-            "      %%%%%                            ###                  xx                                   -+xx()xx",
-            "                                                           xxx                                 xx()xx()xx ",
-            "                                                          xxxx                               -+xx()xx()xx",
-            "                               ^      %%%%%%             xxxxx      -+        ========      x()xx()xx()xx  ",
-            "              ^   ^   ^  -+-+-+-+-+                ^    xxxxxx      ()                     xx()xx()xx()xx    ",
-            "=========================()()()()()            =================    =======              =================    ===",
+            "                                 m                                         m                m                    ",
+            "                                                                                                                  e      ",
+            "                                                                                 e                             ",
+            "        m                                                       e                                            ",
+            "                                                  mm                                             m                        m",
+            "                                      m                                                                     ",
+            "       # # #            00                                              m                                     ",
+            "                                                                                           $$                              !",
+            "                 m                             %%                                                                xx ",
+            "                                                                               %$$$%                           -+xx     ", 
+            "                           %$%*%       ###                   x                                               xx()xx",
+            "      %%%%%                                                 xx                                           -+xx()xx",
+            "                                                           xxx                              xx              xx()xx()xx ",
+            "                                                          xxxx                                         -+xx()xx()xx",
+            "                               ^      %%%%%%             xxxxx      -+        ========                x()xx()xx()xx  ",
+            "              ^   ^   ^  -+-+-+-+-+                ^    xxxxxx      ()                               xx()xx()xx()xx    ",
+            "=========================()()()()()            =================    =======                ===========================   ===",
         ], {
             // Definimos el tamaño de cada bloque
             width: 35,
@@ -221,6 +223,13 @@ function game2(){
                 area(),
                 solid(),
                 'estrellita',
+            ],
+            "m": () =>[
+                scale(0.3),
+                sprite("nube"),
+                area(),
+                
+                
             ]
         })
 
