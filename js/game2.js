@@ -113,18 +113,23 @@ function game2(){
         }
 
         //Definimos el escenario
-        addLevel([  
-            "         # # #        e                                                                          ",
-            "                                                                                                   !",
-            "                                                                                              xx ",
-            "                                             %%                                             -+xx     ", 
-            "                           %$%*%                             x                            xx()xx",
-            "      %%%%%                            ###                  xx                          -+xx()xx",
-            "                                                           xxx                        xx()xx()xx ",
-            "                                                          xxxx                      -+xx()xx()xx",
-            "                               ^      %%%%%%             xxxxx      -+             x()xx()xx()xx  ",
-            "              ^   ^   ^  -+-+-+-+-+                ^    xxxxxx      ()            xx()xx()xx()xx    ",
-            "=========================()()()()()            =================    =======       ==============",
+        addLevel([
+            "                                                                                                         e      ",
+            "                                                                                                              ",
+            "                                                                e                 e                          ",
+            "                                                                                                            ",
+            "                                                                                                            ",
+            "       # # #            00                                                                                   ",
+            "                                                                                                              !",
+            "                                                                                                       xx ",
+            "                                             %%                                %$$$%                 -+xx     ", 
+            "                           %$%*%                             x                                     xx()xx",
+            "      %%%%%                            ###                  xx                                   -+xx()xx",
+            "                                                           xxx                                 xx()xx()xx ",
+            "                                                          xxxx                               -+xx()xx()xx",
+            "                               ^      %%%%%%             xxxxx      -+        ========      x()xx()xx()xx  ",
+            "              ^   ^   ^  -+-+-+-+-+                ^    xxxxxx      ()                     xx()xx()xx()xx    ",
+            "=========================()()()()()            =================    =======              =================    ===",
         ], {
             // Definimos el tamaño de cada bloque
             width: 35,
@@ -215,6 +220,7 @@ function game2(){
                 sprite("estrellita"),
                 area(),
                 solid(),
+                'estrellita',
             ]
         })
 
@@ -318,6 +324,26 @@ function game2(){
                     if(obj.is('bloquesito'))
                     {
                         destroy(obj);
+                    }
+                    if(obj.is('estrellita'))
+                    {
+                        const musicMoneda = play("coin", {
+                            volume: 0.4,
+                        });
+                        add([
+                            sprite("estrellita"),
+                            pos(obj.pos.sub(0,30)),
+                            scale(0.2),
+                            area(),
+                            solid(),
+                            lifespan(0.3),
+                            
+                            
+                        ])
+                        destroy(obj);
+                        monedas+=5;
+                        puntaje.text = monedas;
+
                     }
                 })
             
@@ -452,6 +478,7 @@ function game2(){
                 saltar();
                 btnArriba.opacity = 1;
             }
+            
         })
 
         const onTouchChanged = (_, pos)=>{
