@@ -403,7 +403,7 @@ function game1(){
             sprite('arriba'),
             area(),
             fixed(),
-            pos(1060, 100),
+            pos(200, 160),
             opacity(0.5),
         ])
         const btnDerecha = add([
