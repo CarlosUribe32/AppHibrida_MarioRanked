@@ -32,10 +32,13 @@ $niveles_color_fondo: #E82139;
         background-color: $niveles_color_fondo;
     }
     #niveles_div_nivel1{
-        left: 15%;
+        left: 10%;
     }
     #niveles_div_nivel2{
-        left: 59%;
+        left: 37%;
+    }
+    #niveles_div_nivel3{
+        left: 64%;
     }
     #niveles_h1_titulo{
         // bottom: 70%;
@@ -46,6 +49,9 @@ $niveles_color_fondo: #E82139;
         opacity: 50%;
     }
     #niveles_img_nivel2:hover{
+        opacity: 50%;
+    }
+    #niveles_img_nivel3:hover{
         opacity: 50%;
     }
 }
