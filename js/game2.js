@@ -46,7 +46,6 @@ function game2(){
     })
 
      //Cargamos las imagenes
-     loadRoot('../');
      loadSprite('piso', './imgs/nivel_piso.png');
      loadSprite('bloque', './imgs/nivel_bloque.png');
      loadSprite('bloqueVacio', './imgs/nivel_bloque2.png');

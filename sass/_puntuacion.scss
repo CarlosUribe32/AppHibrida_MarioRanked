@@ -12,7 +12,7 @@
   }
 
 .pnt-imagenes{
-    position: relative;
+    position: fixed;
     width: 120px;
     height: 120px;
     margin: 30%;
@@ -68,20 +68,20 @@ tr{
   }
 
   #img-hongo{
-      top: -550px;
+      top: -355px;
       left: -340px;
      
   }
   #img-planta{
-      top: -820px;
+      top: -185px;
       left: -340px;
      
   }
 
   #img-mario{
    
-        top: -1410px;
-        left: 640px;
+        top: -275px;
+        left: 600px;
   }
 
   #pnt-btn{

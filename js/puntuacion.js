@@ -14,6 +14,8 @@ function pnt_inicio(){
 
 function pnt_filasGenaradas(){
     let pnt_jugadores=[];
+    let pnt_long;
+    console.log(localStorage.length);
     for (let i = 0; i < localStorage.length; i++) {
         if(localStorage.key(i)!=='elJugador' && localStorage.key(i)!=='personajeSeleccionado'&& localStorage.key(i)!=='length'){
             let pnt_jugador = {nombre: localStorage.key(i),
@@ -22,7 +24,15 @@ function pnt_filasGenaradas(){
         }
     }
     pnt_jugadores.sort(pnt_condicionParaOrdenar);
-    for(let i = 0; i<5; i++){
+
+    if(pnt_jugadores.length<5){
+        pnt_long = pnt_jugadores.length;
+    }
+    else{
+        pnt_long = 5;
+    }
+    console
+    for(let i = 0; i<pnt_long; i++){
         pntfilas.innerHTML += '<tr><td>'+(i+1)+'</td> <td>'+pnt_jugadores[i].nombre+'</td> <td>'+pnt_jugadores[i].puntos+'</td></tr>';
     }
 }
