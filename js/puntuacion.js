@@ -21,8 +21,10 @@ function pnt_filasGenaradas(){
             pnt_jugadores.push(pnt_jugador);
         }
     }
+    pnt_jugadores.sort(pnt_condicionParaOrdenar);
+    console.log(pnt_jugadores);
     for(let i = 0; i<5; i++){
-        pntfilas.innerHTML += '<tr><td>1.</td> <td>'+localStorage.key(i)+'</td> <td>5000</td></tr>';
+        pntfilas.innerHTML += '<tr><td>'+(i+1)+'</td> <td>'+pnt_jugadores[i].nombre+'</td> <td>'+pnt_jugadores[i].puntos+'</td></tr>';
     }
 }
 function pnt_condicionParaOrdenar(personaA, personaB) {
