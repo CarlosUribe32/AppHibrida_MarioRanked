@@ -524,6 +524,35 @@ function game3() {
       fixed(),
     ]);
   });
+  scene('estadoFinal', ({score, estado})=>{
+    let duracion;
+    if(estado==="Game Over"){
+        duracion=7000;
+        const musicLevel = play("nivelPerdido", {
+            volume: 0.5,
+        })
+    }
+    else if(estado==="Ganaste"){
+        duracion=6000;
+        const musicLevel = play("nivelGanado", {
+            volume: 0.5,
+        })
+    }
+
+    add([text(estado, 32), origin('center'), pos(width()/2.1, height()/3.5)])
+    add([text('Puntaje:'), origin('center'), pos(width()/2.1, height()/3.5 + 80)])
+    add([text(score, 32), origin('center'), pos(width()/2.1, height()/3.5 + 160)])
+
+    let red = setTimeout(redireccionarIndex, duracion);
+
+    function redireccionarIndex(){
+        let elJugador = localStorage.getItem("elJugador");
+        localStorage.removeItem(elJugador);
+        localStorage.setItem(elJugador, monedas);
+        location.href = "index.html";
+    }
+})
+
 
   go("game");
 }
