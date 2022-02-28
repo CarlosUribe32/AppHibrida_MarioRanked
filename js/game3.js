@@ -56,7 +56,7 @@ function game3() {
   loadSprite("bloqueVacio", "./imgs/nivel_bloque2.png");
   loadSprite("bloqueObstaculo","./imgs/bloque2_nivel3.png");
   loadSprite("flor", "./imgs/nivel_flor.png");
-  loadSprite("tortuga", './imgs/tortuga_nivel3.png');
+  loadSprite("tortuga", './imgs/Tortuga_nivel3.png');
   loadSprite("caparazon", "./imgs/caparazon_nivel3.png");
   loadSprite("hongo", "./imgs/nivel_hongo.png");
   loadSprite("moneda", "./imgs/nivel_moneda.png");
