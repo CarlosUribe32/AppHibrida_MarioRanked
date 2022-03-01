@@ -71,7 +71,7 @@ function game3() {
   loadSprite('derecha', './imgs/nivel3_derecha.png');
   loadSprite('goomba', './imgs/nivel_goomba.png');
   loadSprite('caparazon','./imgs/caparazon_nivel3.png');
-  loadSound("nivel1", "./sounds/nivel1.mp3");
+  loadSound("nivel3", "./sounds/nivel3.mp3");
   loadSound("nivelPerdido", "./sounds/nivelPerdido.mp3");
   loadSound("nivelGanado", "./sounds/nivelGanado.mp3");
   loadSound("salto", "./sounds/salto.mp3");
@@ -80,7 +80,7 @@ function game3() {
   loadSound("hongoS", "./sounds/hongo.mp3");
 
   scene("game", () => {
-    const musicLevel = play("nivel1", {
+    const musicLevel = play("nivel3", {
       loop: true,
       volume: 0.5,
     });
