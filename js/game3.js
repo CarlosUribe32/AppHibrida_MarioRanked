@@ -421,7 +421,7 @@ function game3() {
       sprite('derecha'),
       area(),
       fixed(),
-      pos(1200, 100),
+      pos(1090, 90),
       opacity(0.5),
   ])
   const btnIzquierda = add([
@@ -429,7 +429,7 @@ function game3() {
       sprite('izquierda'),
       area(),
       fixed(),
-      pos(1120, 100),
+      pos(1000, 90),
       opacity(0.5),
   ])
 
