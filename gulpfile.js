@@ -22,6 +22,13 @@ function css(){
             .pipe(dest("./css"));
 }
 
+function game(){
+    return src(['./js/game1.js','./js/game2.js','./js/game3.js'])
+            .pipe(uglify())
+            .pipe(dest('./dist/js'));
+}
+
 exports.css = css;
 exports.js = js;
+exports.game = game;
 exports.default = ()=>{};
