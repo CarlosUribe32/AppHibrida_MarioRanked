@@ -5,10 +5,7 @@ function init(){
     let file = path.substring(path.lastIndexOf('/'));
     console.log(file);
     switch (file) {
-        case "/index.html":
-            index();
-            break;
-        case "/":
+        case "/index.html", "/":
             index();
             break;
         case "/creditos.html":
