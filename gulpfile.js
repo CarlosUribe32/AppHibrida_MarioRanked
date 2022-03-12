@@ -25,7 +25,7 @@ function css(){
 function game(){
     return src(['./js/game1.js','./js/game2.js','./js/game3.js'])
             .pipe(uglify())
-            .pipe(dest('./dist/js'));
+            .pipe(dest('./www/js'));
 }
 
 exports.css = css;
