@@ -76,7 +76,7 @@ function game2(){
      loadSprite('nube', './imgs/nivel-nube.png');
 
      //Cargamos el sonido
-     loadSound("nivel1", "./sounds/nivel1.mp3");
+     loadSound("nivel2", "./sounds/nivel2.mp3");
      loadSound("nivelPerdido", "./sounds/nivelPerdido.mp3");
      loadSound("nivelGanado", "./sounds/nivelGanado.mp3");
      loadSound("salto", "./sounds/salto.mp3");
@@ -87,7 +87,7 @@ function game2(){
 
     scene("juego", ()=>{
         //Iniciamos Sonido
-        const musicLevel = play("nivel1", {
+        const musicLevel = play("nivel2", {
             loop: true,
             volume: 0.5,
         })
