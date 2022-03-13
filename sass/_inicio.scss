@@ -3,9 +3,9 @@ $index_color_fondo: #6883df;
   background-color: rgb(255, 255, 255);
 
   .index_button {
-    width: 90px;
-    height: 40px;
-    margin-bottom: 15px;
+    width: 80px;
+    height: 33px;
+    margin-bottom: 6px;
     border-radius: 30%;
     font-family: cursive;
   }
@@ -19,40 +19,41 @@ $index_color_fondo: #6883df;
     background: $index_color_fondo;
 
     #index_img_titulo {
-      width: 300px;
-      height: 150px;
-      left: 440px;
+      width: 200px;
+      height: 73px;
+      left: 246px;
+      top: 15px;
     }
     #index_img_hongo {
-      width: 70px;
-      height: 90px;
-      left: 350px;
-      top: 50px;
+      width: 40px;
+      height: 48px;
+      left: 56px;
+      top: 20px;
     }
     #index_img_mario {
-      width: 80px;
-      height: 100px;
-      left: 520px;
-      top: 190px;
+      width: 70px;
+      height: 80px;
+      left: 220px;
+      top: 109px;
     }
     #index_img_rex {
-      width: 80px;
-      height: 100px;
-      left: 650px;
-      top: 190px;
+      width: 70px;
+      height: 86px;
+      left: 366px;
+      top: 109px;
     }
     #index_img_nube {
-      width: 80px;
-      height: 100px;
-      left: 760px;
-      top: 50px;
+      width: 74px;
+      height: 76px;
+      left: 518px;
+      top: 10px;
     }
   }
   #index_div_buttons {
     width: 100px;
     height: 170px;
     position: relative;
-    left: 330px;
-    top: 190px;
+    left: 30px;
+    top: 70px;
   }
 }
