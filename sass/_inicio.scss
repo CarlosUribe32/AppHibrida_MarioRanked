@@ -3,9 +3,9 @@ $index_color_fondo: #6883df;
   background-color: rgb(255, 255, 255);
 
   .index_button {
-    width: 80px;
-    height: 33px;
-    margin-bottom: 6px;
+    width: 100px;
+    height: 41px;
+    margin-bottom: 17px;
     border-radius: 30%;
     font-family: cursive;
   }
@@ -14,39 +14,39 @@ $index_color_fondo: #6883df;
   }
   #index_div_images {
     position: absolute;
-    width: 630px;
-    height: 200px;
+    width: 660px;
+    height: 310px;
     background: $index_color_fondo;
 
     #index_img_titulo {
-      width: 200px;
-      height: 73px;
+      width: 205px;
+      height: 89px;
       left: 246px;
       top: 15px;
     }
     #index_img_hongo {
-      width: 40px;
-      height: 48px;
-      left: 56px;
-      top: 20px;
+      width: 50px;
+      height: 55px;
+      left: 62px;
+      top: 26px;
     }
     #index_img_mario {
-      width: 70px;
-      height: 80px;
-      left: 220px;
-      top: 109px;
+      width: 80px;
+      height: 95px;
+      left: 235px;
+      top: 183px;
     }
     #index_img_rex {
-      width: 70px;
-      height: 86px;
-      left: 366px;
-      top: 109px;
+      width: 75px;
+      height: 97px;
+      left: 376px;
+      top: 183px;
     }
     #index_img_nube {
-      width: 74px;
-      height: 76px;
+      width: 90px;
+      height: 89px;
       left: 518px;
-      top: 10px;
+      top: 10px;  
     }
   }
   #index_div_buttons {
@@ -54,6 +54,6 @@ $index_color_fondo: #6883df;
     height: 170px;
     position: relative;
     left: 30px;
-    top: 70px;
+    top: 100px;
   }
 }
