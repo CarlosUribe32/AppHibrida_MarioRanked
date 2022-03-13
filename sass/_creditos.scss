@@ -1,6 +1,6 @@
 .creditos_body{
-    width: 1170px;
-    height: 360px;
+    width: 660px;
+    height: 310px;
     background-color: #6883DF;
 
     .creditos_imagenes{
@@ -11,7 +11,7 @@
         width: 55px;
         height: 75px;
         padding-top: 1%;
-        left: 28%;
+        left: 145px;
     }
     .creditos_titulo{
         margin-left: 43%;
@@ -23,26 +23,27 @@
         position:relative;
     }
     .creditos_imagenes_piraña{
-        width: 135px;
-        height: 200px;
-        left: 15%;
+        width: 100px;
+        height: 174px;
+        left: 9%;
+        top: 48px;
     }
     .creditos_imagenes_estrella{
-        width: 213px;
-        height: 251px;
-        left: 73%;
+        width: 165px;
+        height: 199px;
+        left: 490px;
     }
     .creditos_texto_central{
         position: relative;
-        margin-left: 31%;
-        padding-right: 36%;
+        margin-left: 32%;
+        padding-right: 30%;
         text-align: center;
     }
     
     .creditos_imagenes_goomba{
-        width: 61px;
-        height: 64px;
-        left: 52%;
+        width: 50px;
+        height: 55px;
+        left: 420px;
     }
     .creditos_botones{
         position:relative;
@@ -51,15 +52,15 @@
         font-size: 15px;
         background-color: #B91327;
         transition-duration: 0.4s;
-        left: 45%;
+        left: 48%;
     }
     .creditos_botones:hover{
         background-color: #EE596A;
     }
     .creditos_imagenes_moneda{
-        width: 61px;
-        height: 64px;
-        left: 39%;
-        margin-top: 2%;
+        width: 42px;
+        height: 42px;
+        left: 333px;
+        top: 292px;
     }
 }

@@ -1,21 +1,19 @@
 .pnt-body {
-    width: 1170px;
-    height: 360px;
-    
+    width: 660px;
+    height: 310px;
   }
   
 .pnt-contenedor{
-      width: 1170px;
-      height: 360px;
+      width: 660px;
+      height: 310px;
       background-color: #b91327;
   
   }
 
 .pnt-imagenes{
     position: fixed;
-    width: 120px;
-    height: 120px;
-    margin: 30%;
+    width: 100px;
+    height: 100px;
     border-radius: 100%;
     border: 2px solid yellow;
     display: block;
@@ -23,7 +21,7 @@
 }
 
 #pnt-tabla{
-    width:720px;
+    width:420px;
     margin:0 auto;
     color:white;
     text-align:center;
@@ -68,20 +66,20 @@ tr{
   }
 
   #img-hongo{
-      top: -355px;
-      left: -340px;
+      top: 30px;
+    left: 19px;
      
   }
   #img-planta{
-      top: -185px;
-      left: -340px;
+    top: 215px;
+    left: 19px; 
      
   }
 
   #img-mario{
    
-        top: -275px;
-        left: 600px;
+    top: 125px;
+    left: 558px;
   }
 
   #pnt-btn{
@@ -91,9 +89,9 @@ tr{
       position: relative;
       border: 3px solid black;
       background: #6883DF;
-      top: 200px;
+      top: 180px;
       text-align: center;
-      left: 560px;
+      left: 304px;
   }
   #pnt-btn:hover{
     opacity: 50%;

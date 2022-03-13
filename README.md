@@ -24,7 +24,9 @@ Vista en la que se visualiza la información del equipo de programadadores que d
 # Información importante
 kaboom usa ciertas funciones predeterminadas para funcionar, por lo que los scripts game1.js, game2.js y game3.js no se encuentran dentro del script minificado; por lo tanto las vistas nivel1.html, nivel2.html y nivel3.html no usan el archivo minificado main.min.js
 
-El aplicativo funcional en produccion se encuentra en la carpeta dist (bundle final)
+El aplicativo funcional en produccion se encuentra en la carpeta dist (bundle final).
+
+Se le cambio el nombre al aplicativo funcional a: "Niko Ranked" por temas de copyright
 
 # Integrantes del equipo
 - Juan Nicolas Ruiz Muñoz
