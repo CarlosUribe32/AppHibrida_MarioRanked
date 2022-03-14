@@ -413,7 +413,7 @@ function game3() {
       sprite('arriba'),
       area(),
       fixed(),
-      pos(106, 100),
+      pos(150, 250),
       opacity(0.5),
   ])
   const btnDerecha = add([
@@ -421,7 +421,7 @@ function game3() {
       sprite('derecha'),
       area(),
       fixed(),
-      pos(1090, 90),
+      pos(550, 250),
       opacity(0.5),
   ])
   const btnIzquierda = add([
@@ -429,7 +429,7 @@ function game3() {
       sprite('izquierda'),
       area(),
       fixed(),
-      pos(1000, 90),
+      pos(450, 250),
       opacity(0.5),
   ])
 
@@ -507,7 +507,7 @@ function game3() {
     });
 
     const monedaPuntaje = add([
-      pos(1020, 25),
+      pos(480, 50),
       scale(1.7),
       sprite("moneda"),
       area(),
@@ -518,7 +518,7 @@ function game3() {
       {
         value: "score",
       },
-      pos(1060, 20),
+      pos(520, 45),
       scale(0.5),
       area(),
       fixed(),
