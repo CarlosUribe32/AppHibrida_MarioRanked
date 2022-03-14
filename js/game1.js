@@ -410,7 +410,7 @@ function game1(){
             sprite('arriba'),
             area(),
             fixed(),
-            pos(200, 160),
+            pos(150, 250),
             opacity(0.5),
         ])
         const btnDerecha = add([
@@ -418,7 +418,7 @@ function game1(){
             sprite('derecha'),
             area(),
             fixed(),
-            pos(1100, 160),
+            pos(550, 250),
             opacity(0.5),
         ])
         const btnIzquierda = add([
@@ -426,7 +426,7 @@ function game1(){
             sprite('izquierda'),
             area(),
             fixed(),
-            pos(1020, 160),
+            pos(450, 250),
             opacity(0.5),
         ])
 
