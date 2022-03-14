@@ -507,7 +507,7 @@ function game3() {
     });
 
     const monedaPuntaje = add([
-      pos(1020, 25),
+      pos(480, 50),
       scale(1.7),
       sprite("moneda"),
       area(),
@@ -518,7 +518,7 @@ function game3() {
       {
         value: "score",
       },
-      pos(1060, 20),
+      pos(520, 45),
       scale(0.5),
       area(),
       fixed(),
