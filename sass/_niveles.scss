@@ -5,11 +5,11 @@ $niveles_color_fondo: #E82139;
         font-family: fantasy;
         position: absolute;
         bottom: 70%;
-        left: 43%;
+        left: 38%;
     }
     .niveles_div{
         position:absolute;
-        width: 300px;
+        width: 190px;
         height: 190px;
         // bottom: 20%;
     }
@@ -17,8 +17,8 @@ $niveles_color_fondo: #E82139;
         top: 30%;
     }
     .niveles_img{
-        width: 280px;
-        height: 150px;
+        width: 165px;
+        height: 120px;
         border-radius: 10%;
         border: 2px solid black;
         position: absolute;
@@ -27,8 +27,8 @@ $niveles_color_fondo: #E82139;
     }
     #niveles_div_uno{
         
-        width: 1170px;
-        height: 360px;
+        width: 660px;
+        height: 310px;
         background-color: $niveles_color_fondo;
     }
     #niveles_div_nivel1{
